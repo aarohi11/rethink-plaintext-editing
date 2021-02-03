@@ -18,10 +18,10 @@ import IconJSONSVG from '../public/icon-json.svg';
 import css from './style.module.css';
 
 const TYPE_TO_ICON = {
-  'text/plain': IconPlaintextSVG,
-  'text/markdown': IconMarkdownSVG,
-  'text/javascript': IconJavaScriptSVG,
-  'application/json': IconJSONSVG
+  "text/plain": IconPlaintextSVG,
+  "text/markdown": IconMarkdownSVG,
+  "text/javascript": IconJavaScriptSVG,
+  "application/json": IconJSONSVG
 };
 
 function FilesTable({ files, activeFile, setActiveFile }) {
@@ -40,7 +40,7 @@ function FilesTable({ files, activeFile, setActiveFile }) {
               key={file.name}
               className={classNames(
                 css.row,
-                activeFile && activeFile.name === file.name ? css.active : ''
+                activeFile && activeFile.name === file.name ? css.active : ""
               )}
               onClick={() => setActiveFile(file)}
             >
@@ -55,11 +55,11 @@ function FilesTable({ files, activeFile, setActiveFile }) {
               </td>
 
               <td>
-                {new Date(file.lastModified).toLocaleDateString('en-US', {
-                  weekday: 'long',
-                  year: 'numeric',
-                  month: 'long',
-                  day: 'numeric'
+                {new Date(file.lastModified).toLocaleDateString("en-US", {
+                  weekday: "long",
+                  year: "numeric",
+                  month: "long",
+                  day: "numeric"
                 })}
               </td>
             </tr>
@@ -77,7 +77,7 @@ FilesTable.propTypes = {
 };
 
 function Previewer({ file }) {
-  const [value, setValue] = useState('');
+  const [value, setValue] = useState("");
 
   useEffect(() => {
     (async () => {
@@ -99,8 +99,8 @@ Previewer.propTypes = {
 
 // Uncomment keys to register editors for media types
 const REGISTERED_EDITORS = {
-  // "text/plain": PlaintextEditor,
-  // "text/markdown": MarkdownEditor,
+  "text/plain": PlaintextEditor,
+  "text/markdown": MarkdownEditor,
 };
 
 function PlaintextFilesChallenge() {
@@ -113,9 +113,25 @@ function PlaintextFilesChallenge() {
   }, []);
 
   const write = file => {
-    console.log('Writing soon... ', file.name);
+    console.log("Writing... ", file.name);
+    console.log(file);
 
-    // TODO: Write the file to the `files` array
+    const result = files.find(e => e.name == file.name);
+    const index = files.indexOf(result);
+    
+    const buffer = files.slice();
+    buffer[index] = file;
+
+    const original = listFiles();
+    console.log("\n Original:"+original);
+    original[index] = file;
+
+    console.log(original[index]);
+    console.log(files);
+    console.log(buffer);
+
+    setFiles(buffer);
+    setActiveFile(buffer[index]);
   };
 
   const Editor = activeFile ? REGISTERED_EDITORS[activeFile.type] : null;
@@ -124,14 +140,15 @@ function PlaintextFilesChallenge() {
     <div className={css.page}>
       <Head>
         <title>Rethink Engineering Challenge</title>
+        <link rel="stylesheet" href="https://nebulon.s3.amazonaws.com/react-mde/react-mde-all.css" />
       </Head>
       <aside>
         <header>
           <div className={css.tagline}>Rethink Engineering Challenge</div>
-          <h1>Fun With Plaintext</h1>
+          <h1>Plaintext: Why So Plain</h1>
           <div className={css.description}>
-            Let{"'"}s explore files in JavaScript. What could be more fun than
-            rendering and editing plaintext? Not much, as it turns out.
+            Let{"'"}s have fun with files and JavaScript. What could be more fun
+            than rendering and editing plaintext? Not much, as it turns out.
           </div>
         </header>
 
@@ -145,11 +162,12 @@ function PlaintextFilesChallenge() {
 
         <footer>
           <div className={css.link}>
-            <a href="https://v3.rethink.software/jobs">Rethink Software</a>
+            <a href="https://rethink.software">Rethink Software</a>
             &nbsp;—&nbsp;Frontend Engineering Challenge
           </div>
           <div className={css.link}>
-            Questions? Feedback? Email us at jobs@rethink.software
+            Questions? Feedback? Email{" "}
+            <a href="mailto:will@rethink.software">will@rethink.software</a>
           </div>
         </footer>
       </aside>

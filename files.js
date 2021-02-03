@@ -1,55 +1,61 @@
 export function listFiles() {
+
+  
+
   const guide = new File(
     [
-      `The objective is to significantly improve this file browser. Features to think about include: a text editor, markdown and code previews, or file changes persisting across reloads.
+      `The objective is to make this application better in a perceptible way. Features this application has had include a text editor, markdown or code previews, and even file changes persisting through reloads.
 
-Install any npm packages or use any third party code you'd like, but please make sure it is clear when you do so.
+Install any npm packages you'd like.
 
-Once complete, send us a forked GitHub repo link.
+This is designed for creative freedom.
 
-Thanks for trying our challenge!
+Once complete, email me a repo link at will@rethink.software.
 
-- Rethink Engineering
+Thanks for trying my challenge!
+
+- Will
 `
     ],
-    '/README.txt',
+    "/README.txt",
     {
-      type: 'text/plain',
-      lastModified: new Date('2020-01-05T16:39:00')
+      type: "text/plain",
+      lastModified: new Date("2020-01-05T16:39:00")
     }
   );
+
+  var plaindata = localStorage.getItem('plain');
+  console.log(plaindata);
 
   const plain = new File(
-    ['Just some text looking for an editor'],
-    '/plain.txt',
+    [plaindata],
+    "/plain.txt",
     {
-      type: 'text/plain',
-      lastModified: new Date('1995-12-17T03:24:00')
+      type: "text/plain"
+      /*lastModified: new Date("1995-12-17T03:24:00")*/
     }
   );
 
+  var waterdata = localStorage.getItem('water');
+
   const water = new File(
-    [
-      'Increasing water scarcity is an extremely dangerous symptom of a warming planet. The World Health Organization estimates that half of the global population will live in water-stressed areas by 2025. In 2008, the CEO of DOW Chemical said, “Water is the oil of the 21st century.” There have been 9 major conflicts over oil since 1932.'
-    ],
-    '/water.txt',
+    [waterdata],
+    "/water.txt",
     {
-      type: 'text/plain',
-      lastModified: new Date('1998-12-17T04:24:00')
+      type: "text/plain"
+      /*lastModified: new Date("1998-12-17T04:24:00")*/
     }
   );
+
+  var fancydata = localStorage.getItem('fancy');
 
   // Here is a markdown file
   const fancy = new File(
-    [
-      `# Some Markdown that could be rendered and HTML
-
-The *quick* brown fox, jumped **over** the lazy [dog](https://en.wikipedia.org/wiki/Dog).`
-    ],
-    '/fancy.md',
+    [fancydata],
+    "/fancy.md",
     {
-      type: 'text/markdown',
-      lastModified: new Date('2018-09-14T09:32:17')
+      type: "text/markdown"
+      //lastModified: new Date("2018-09-14T09:32:17")
     }
   );
 
@@ -68,10 +74,10 @@ export default initialValue => {
   return [state, stateRef, setState];
 };`
     ],
-    '/use-ref-state.js',
+    "/use-ref-state.js",
     {
-      type: 'text/javascript',
-      lastModified: new Date('2019-04-01T12:15:01')
+      type: "text/javascript",
+      lastModified: new Date("2019-04-01T12:15:01")
     }
   );
 
@@ -83,10 +89,10 @@ export default initialValue => {
     "rights" : [ "admin", "editor", "contributor" ]
 }`
     ],
-    '/document.json',
+    "/document.json",
     {
-      type: 'application/json',
-      lastModified: new Date('2011-07-29T16:01:35')
+      type: "application/json",
+      lastModified: new Date("2011-07-29T16:01:35")
     }
   );
 
