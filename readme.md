@@ -12,3 +12,16 @@ To run the challenge:
 Once complete, please email us a link to your forked repo with clean, tested code. We will use Chrome to run it.
 
 - Rethink Engineering
+
+
+# My solution to challenge.
+
+Text editor created using react-mde with showdown.
+
+Files updated: plain.txt, water.txt and fancy.md.
+
+Features included : -
+
+1) Update files in editor.
+2) Preview changes.
+3) Persist changes on reloads. (using localcompare in javascript).
